@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { WebpackPluginServe } = require("webpack-plugin-serve");
 
 exports.devServer = () => ({
@@ -20,6 +21,34 @@ exports.page = ({ title }) => ({
 
 exports.loadCSS = () => ({
   module: {
-    rules: [{ test: /\.css$/, use: ["style-loader", "css-loader"] }],
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
   },
 });
+
+exports.extractCSS = ({ options = {}, loaders = [] } = {}) => {
+  return {
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: [
+            { loader: MiniCssExtractPlugin.loader, options },
+            "css-loader",
+            // { loader: "css-loader", options: { modules } },
+          ].concat(loaders),
+          sideEffects: true,
+        },
+      ],
+    },
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: "[name].css",
+      }),
+    ],
+  };
+};

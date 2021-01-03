@@ -1,10 +1,13 @@
 const { mode } = require("webpack-nano/argv");
 const { merge } = require("webpack-merge");
 const parts = require("./webpack.parts");
+const glob = require("glob");
 
 const commonConfig = merge([
   { entry: ["./src"] },
+  // { entry: { style: glob.sync("./src/**/*.css") } },
   parts.page({ title: "Demo" }),
+  parts.extractCSS(),
 ]);
 
 const productionConfig = merge([]);
@@ -12,7 +15,6 @@ const productionConfig = merge([]);
 const developmentConfig = merge([
   { entry: ["webpack-plugin-serve/client"] },
   parts.devServer(),
-  parts.loadCSS(),
 ]);
 
 const getConfig = (mode) => {

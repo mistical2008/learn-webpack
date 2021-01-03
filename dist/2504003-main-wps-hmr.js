@@ -15,7 +15,7 @@ self["webpackHotUpdate_071_learnWebpack_repo"]("main",{
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => __WEBPACK_DEFAULT_EXPORT__\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((text = \"Hello World!\") => {\n  const element = document.createElement(\"div\");\n  element.innerHTML = text;\n  return element;\n});\n\n\n//# sourceURL=webpack://071-learnWebpack-repo/./src/component.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => __WEBPACK_DEFAULT_EXPORT__\n/* harmony export */ });\n// import styles from \"./componenet.css\";\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((text = \"Hello!\") => {\n  const element = document.createElement(\"div\");\n  element.innerHTML = text;\n  // element.className = styles.redText;\n  return element;\n});\n\n\n//# sourceURL=webpack://071-learnWebpack-repo/./src/component.js?");
 
 /***/ })
 
@@ -25,7 +25,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => "5dc2dccc2c5f439aeff6"
+/******/ 		__webpack_require__.h = () => "259021422732bd9cc868"
 /******/ 	})();
 /******/ 	
 /******/ }
