@@ -17,3 +17,9 @@ exports.devServer = () => ({
 exports.page = ({ title }) => ({
   plugins: [new HtmlWebpackPlugin({ context: { title } })],
 });
+
+exports.loadCSS = () => ({
+  module: {
+    rules: [{ test: /\.css$/, use: ["style-loader", "css-loader"] }],
+  },
+});

@@ -12,6 +12,7 @@ const productionConfig = merge([]);
 const developmentConfig = merge([
   { entry: ["webpack-plugin-serve/client"] },
   parts.devServer(),
+  parts.loadCSS(),
 ]);
 
 const getConfig = (mode) => {
