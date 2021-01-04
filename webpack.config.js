@@ -14,7 +14,7 @@ const commonConfig = merge([
   // { entry: { style: glob.sync("./src/**/*.css") } },
   parts.page({ title: "Demo" }),
   parts.extractCSS({
-    modules: modulesConf,
+    modules: modulesConf ? modulesConf : false,
   }),
 ]);
 
