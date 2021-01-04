@@ -1,6 +1,11 @@
+const glob = require("glob");
+const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { WebpackPluginServe } = require("webpack-plugin-serve");
+const purgeCssPlugin = require("purgecss-webpack-plugin");
+
+const ALL_FILES = glob.sync(path.join(__dirname, "src/*.js"));
 
 exports.devServer = () => ({
   watch: true,
@@ -57,3 +62,23 @@ exports.extractCSS = ({ options = {}, loaders = [], modules = false } = {}) => {
     ],
   };
 };
+
+exports.postCssLoader = () => ({
+  loader: "postcss-loader",
+  options: { postcssOptions: require("./postcss.config.js") },
+});
+
+exports.eliminateUnusedCSS = () => ({
+  plugins: [
+    new purgeCssPlugin({
+      paths: ALL_FILES,
+      extractors: [
+        {
+          extractor: (content) =>
+            content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [],
+          extensions: ["html"],
+        },
+      ],
+    }),
+  ],
+});

@@ -1,5 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   max-width: 1170px;
-  background: lime;
   margin: 0 auto;
+  background: cornsilk;
 }

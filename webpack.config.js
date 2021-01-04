@@ -1,7 +1,8 @@
 const { mode } = require("webpack-nano/argv");
 const { merge } = require("webpack-merge");
 const parts = require("./webpack.parts");
-const glob = require("glob");
+
+const cssLoaders = [parts.postCssLoader()];
 
 // Set config for css-modules
 const modulesConf = {
@@ -11,14 +12,14 @@ const modulesConf = {
 
 const commonConfig = merge([
   { entry: ["./src"] },
-  // { entry: { style: glob.sync("./src/**/*.css") } },
   parts.page({ title: "Demo" }),
   parts.extractCSS({
+    loaders: cssLoaders,
     modules: modulesConf ? modulesConf : false,
   }),
 ]);
 
-const productionConfig = merge([]);
+const productionConfig = merge([parts.eliminateUnusedCSS()]);
 
 const developmentConfig = merge([
   { entry: ["webpack-plugin-serve/client"] },
