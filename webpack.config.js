@@ -3,11 +3,19 @@ const { merge } = require("webpack-merge");
 const parts = require("./webpack.parts");
 const glob = require("glob");
 
+// Set config for css-modules
+const modulesConf = {
+  localIdentName: "[folder]__[local]--[hash:base64:5]",
+  auto: true,
+};
+
 const commonConfig = merge([
   { entry: ["./src"] },
   // { entry: { style: glob.sync("./src/**/*.css") } },
   parts.page({ title: "Demo" }),
-  parts.extractCSS(),
+  parts.extractCSS({
+    modules: modulesConf,
+  }),
 ]);
 
 const productionConfig = merge([]);

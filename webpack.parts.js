@@ -30,7 +30,7 @@ exports.loadCSS = () => ({
   },
 });
 
-exports.extractCSS = ({ options = {}, loaders = [] } = {}) => {
+exports.extractCSS = ({ options = {}, loaders = [], modules = false } = {}) => {
   return {
     module: {
       rules: [
@@ -38,8 +38,13 @@ exports.extractCSS = ({ options = {}, loaders = [] } = {}) => {
           test: /\.css$/,
           use: [
             { loader: MiniCssExtractPlugin.loader, options },
-            "css-loader",
-            // { loader: "css-loader", options: { modules } },
+            // "css-loader",
+            {
+              loader: "css-loader",
+              options: {
+                modules,
+              },
+            },
           ].concat(loaders),
           sideEffects: true,
         },
