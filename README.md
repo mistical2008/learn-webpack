@@ -1,5 +1,5 @@
 # Learn Webpack repository
-> My webpack experiments by [survive.js webpack lessons](https://survivejs.com/webpack]
+> My webpack experiments by [survive.js webpack lessons](https://survivejs.com/webpack)
 
 ## Goals
 - Understand Webpack config structure
